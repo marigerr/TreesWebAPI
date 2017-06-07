@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BigTreesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BigTrees.dbo.treesTrunc' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="treesTrunc">
+          <Key>
+            <PropertyRef Name="ogr_fid" />
+          </Key>
+          <Property Name="ogr_fid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="obj_idnr" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="kommun" Type="nvarchar" MaxLength="50" />
+          <Property Name="lokalnamn" Type="nvarchar" MaxLength="50" />
+          <Property Name="tradslag" Type="nvarchar" MaxLength="50" />
+          <Property Name="stamomkret" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="tradstatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="latitude" Type="numeric" Precision="10" Scale="6" />
+          <Property Name="longitude" Type="numeric" Precision="10" Scale="6" />
+        </EntityType>
+        <EntityContainer Name="BigTreesModelStoreContainer">
+          <EntitySet Name="treesTrunc" EntityType="Self.treesTrunc" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [treesTrunc].[ogr_fid] AS [ogr_fid], 
+    [treesTrunc].[obj_idnr] AS [obj_idnr], 
+    [treesTrunc].[kommun] AS [kommun], 
+    [treesTrunc].[lokalnamn] AS [lokalnamn], 
+    [treesTrunc].[tradslag] AS [tradslag], 
+    [treesTrunc].[stamomkret] AS [stamomkret], 
+    [treesTrunc].[tradstatus] AS [tradstatus], 
+    [treesTrunc].[latitude] AS [latitude], 
+    [treesTrunc].[longitude] AS [longitude]
+    FROM [dbo].[treesTrunc] AS [treesTrunc]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BigTreesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="treesTrunc">
+          <Key>
+            <PropertyRef Name="ogr_fid" />
+          </Key>
+          <Property Name="ogr_fid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="obj_idnr" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="kommun" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lokalnamn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tradslag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="stamomkret" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="tradstatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="latitude" Type="Decimal" Precision="10" Scale="6" />
+          <Property Name="longitude" Type="Decimal" Precision="10" Scale="6" />
+        </EntityType>
+        <EntityContainer Name="BigTreesContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="treesTruncs" EntityType="Self.treesTrunc" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BigTreesModelStoreContainer" CdmEntityContainer="BigTreesContext">
+          <EntitySetMapping Name="treesTruncs">
+            <EntityTypeMapping TypeName="BigTreesModel.treesTrunc">
+              <MappingFragment StoreEntitySet="treesTrunc">
+                <ScalarProperty Name="ogr_fid" ColumnName="ogr_fid" />
+                <ScalarProperty Name="obj_idnr" ColumnName="obj_idnr" />
+                <ScalarProperty Name="kommun" ColumnName="kommun" />
+                <ScalarProperty Name="lokalnamn" ColumnName="lokalnamn" />
+                <ScalarProperty Name="tradslag" ColumnName="tradslag" />
+                <ScalarProperty Name="stamomkret" ColumnName="stamomkret" />
+                <ScalarProperty Name="tradstatus" ColumnName="tradstatus" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
